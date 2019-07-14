@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>WIKI HEROES</ion-title>
+    <ion-buttons slot="end" (click)="openPopover($event)">
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top" color="danger">
+      <ion-tab-button tab="heroes">
+        <ion-label>Heróis</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="evils">
+        <ion-label>Vilões</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="authors">
+        <ion-label>Autores</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

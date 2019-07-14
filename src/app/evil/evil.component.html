@@ -1,0 +1,20 @@
+<ion-content>
+    <ngx-spinner bdOpacity=0.9 bdColor="#eaeaea" size="medium" color="#fff" type="ball-clip-rotate">
+        <p style="color: black"> Carregando... </p>
+    </ngx-spinner>
+    <ion-list>
+        <ion-item button *ngFor="let evil of evils?.listEvils" (click)="evilDetail(evil?.id)">
+            <ion-avatar slot="start">
+                <img src='{{url}}{{evil?.photo}}'>
+            </ion-avatar>
+            <ion-label>
+                <h2>{{evil?.name}}</h2>
+                <p *ngIf="evil?.authors.length === 1">Criado por: {{evil?.authors[0]?.name}}</p>
+                <p *ngIf="evil?.authors.length === 2">Criado por: {{evil?.authors[0]?.name}} e
+                    {{evil?.authors[1]?.name}}</p>
+                <p *ngIf="evil?.authors.length === 3">Criado por: {{evil?.authors[0]?.name}},
+                    {{evil?.authors[1]?.name}} e {{evil?.authors[2]?.name}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

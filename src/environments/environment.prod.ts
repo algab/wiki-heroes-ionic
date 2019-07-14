@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://joli-madame-14125.herokuapp.com'
 };

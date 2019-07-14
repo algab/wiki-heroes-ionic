@@ -1,5 +1,7 @@
 {
-  "name": "wiki-heroes-ionic",
-  "integrations": {},
+  "name": "Wiki Heroes",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
