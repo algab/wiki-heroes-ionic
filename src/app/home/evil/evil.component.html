@@ -1,0 +1,30 @@
+<ion-content>
+    <ion-list *ngIf="evils === undefined">
+        <ion-item *ngFor="let number of [0,1,2,3,4,5]">
+            <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="evils !== undefined">
+        <ion-item button *ngFor="let evil of evils?.listEvils" (click)="evilDetail(evil?.id)">
+            <ion-avatar slot="start">
+                <img src='{{url}}{{evil?.photo}}'>
+            </ion-avatar>
+            <ion-label>
+                <h2>{{evil?.name}}</h2>
+                <p *ngIf="evil?.authors.length === 1">Criado por: {{evil?.authors[0]?.name}}</p>
+                <p *ngIf="evil?.authors.length === 2">Criado por: {{evil?.authors[0]?.name}} e
+                    {{evil?.authors[1]?.name}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

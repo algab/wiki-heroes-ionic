@@ -1,24 +1,28 @@
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { NgxSpinnerModule } from 'ngx-spinner';
-
-import { AuthorRoutingModule } from './author.router.module';
-
 import { AuthorComponent } from './author.component';
 import { AuthorDetailComponent } from './detail/author-detail.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      { path: '', component: AuthorComponent },
+      { path: ':id', component: AuthorDetailComponent }
+    ]
+  },
+];
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    AuthorRoutingModule,
-    NgxSpinnerModule,
-    RouterModule.forChild([{ path: '', component: AuthorComponent }])
+    RouterModule.forChild(routes)
   ],
   declarations: [AuthorComponent, AuthorDetailComponent]
 })

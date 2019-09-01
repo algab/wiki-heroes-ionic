@@ -1,0 +1,29 @@
+<ion-content>
+    <ion-list *ngIf="authors === undefined">
+        <ion-item *ngFor="let number of [0,1,2,3,4,5]">
+            <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="authors !== undefined">
+        <ion-item button *ngFor="let author of authors?.listAuthors" (click)="authorDetail(author?.id)">
+            <ion-avatar slot="start">
+                <img src='{{url}}{{author?.photo}}'>
+            </ion-avatar>
+            <ion-label>
+                <h2>{{author?.name}}</h2>
+                <p>Data de Nascimento: {{author?.birthdate}}</p>
+                <p *ngIf="author?.deathdate !== ''">Data de Falecimento: {{author?.deathdate}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

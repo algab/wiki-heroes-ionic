@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 
-import { environment } from 'src/environments/environment';
+import gql from 'graphql-tag';
+import { Apollo } from 'apollo-angular';
+
+import { environment } from '../../../../environments/environment';
 
 @Component({
-    selector: 'author-detail',
-    templateUrl: 'author-detail.component.html'
+    selector: 'app-home-author-detail',
+    templateUrl: './author-detail.component.html'
 })
 export class AuthorDetailComponent implements OnInit {
     idAuthor: string = null;

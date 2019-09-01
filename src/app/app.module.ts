@@ -10,11 +10,10 @@ import { HttpLinkModule } from 'apollo-angular-link-http';
 
 import { GraphQLModule } from './graphql.module';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -23,6 +22,7 @@ import { AppComponent } from './app.component';
     GraphQLModule,
     HttpLinkModule
   ],
+  declarations: [AppComponent],
   providers: [
     StatusBar,
     SplashScreen,

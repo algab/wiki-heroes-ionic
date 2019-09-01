@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Apollo } from 'apollo-angular';
+
 import gql from 'graphql-tag';
+import { Apollo } from 'apollo-angular';
 
-import { environment } from 'src/environments/environment';
-
-import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'evil',
-    templateUrl: 'evil.component.html',
-    styleUrls: ['evil.component.scss']
+    selector: 'app-home-evil',
+    templateUrl: './evil.component.html',
+    styleUrls: ['./evil.component.scss']
 })
 export class EvilComponent implements OnInit {
-    evils: any = {};
-    url: string = null;
+    url: string;
+    evils: any;
 
-    constructor(private apollo: Apollo, private router: Router, private spinner: NgxSpinnerService) { }
+    constructor(private apollo: Apollo, private router: Router) { }
 
     ngOnInit(): void {
-        this.spinner.show();
         this.url = environment.url;
         this.apollo.watchQuery({
             query: gql`
@@ -36,7 +34,6 @@ export class EvilComponent implements OnInit {
             `
         }).valueChanges.subscribe(({ data }) => {
             this.evils = data;
-            this.spinner.hide();
         });
     }
 

@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { NgxSpinnerModule } from 'ngx-spinner';
-
-import { HomeRoutingModule } from './home.router.module';
+import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent, HomePopOverComponent } from './home.component';
 
@@ -14,7 +12,6 @@ import { HomeComponent, HomePopOverComponent } from './home.component';
     IonicModule,
     CommonModule,
     FormsModule,
-    NgxSpinnerModule,
     HomeRoutingModule
   ],
   declarations: [HomeComponent, HomePopOverComponent],

@@ -13,7 +13,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../hero/hero.module#HeroModule'
+            loadChildren: './hero/hero.module#HeroModule'
           }
         ]
       },
@@ -22,7 +22,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../evil/evil.module#EvilModule'
+            loadChildren: './evil/evil.module#EvilModule'
           }
         ]
       },
@@ -31,7 +31,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../author/author.module#AuthorModule'
+            loadChildren: './author/author.module#AuthorModule'
           }
         ]
       },

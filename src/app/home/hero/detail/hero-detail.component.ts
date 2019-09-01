@@ -1,50 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 
-import { environment } from 'src/environments/environment';
+import gql from 'graphql-tag';
+import { Apollo } from 'apollo-angular';
+
+import { environment } from '../../../../environments/environment';
 
 @Component({
-    selector: 'evil-detail',
-    templateUrl: 'evil-detail.component.html'
+    selector: 'app-home-hero-detail',
+    templateUrl: './hero-detail.component.html'
 })
-export class EvilDetailComponent implements OnInit {
-    idEvil: string = null;
-    evil: any = null;
+export class HeroDetailComponent implements OnInit {
+    idHero: string = null;
+    hero: any = null;
     url: string = null;
 
     constructor(private apollo: Apollo, private router: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.url = environment.url;
-        this.idEvil = this.router.snapshot.paramMap.get('id');
+        this.idHero = this.router.snapshot.paramMap.get('id');
         this.apollo.watchQuery({
             query: gql`
-                query evil($id: Int!) {
-                    queryEvil:searchEvil(id:$id) {
+                query hero($id: Int!) {
+                    queryHero:searchHero(id:$id) {
                         name,
                         authors {
                             name
-                        },
-                        heroes {
-                            name
-                        },
+                        }
                         photo,
                         publisher,
                         year,
-                        first
+                        first,
+                        evils {
+                            name
+                        }
                     }
-                    queryNameEvil:searchEvil(id:$id) {
+                    queryNameHero:searchHero(id:$id) {
                         name(language:Portuguese)
                     }
                 }
             `,
             variables: {
-                id: this.idEvil
+                id: this.idHero
             }
         }).valueChanges.subscribe(({ data }) => {
-            this.evil = data;
+            this.hero = data;
         });
     }
 }

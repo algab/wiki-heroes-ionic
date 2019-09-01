@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Apollo } from 'apollo-angular';
+
 import gql from 'graphql-tag';
+import { Apollo } from 'apollo-angular';
 
-import { environment } from 'src/environments/environment';
-
-import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from '../../../environments/environment';
 
 @Component({
-    selector: 'author',
-    templateUrl: 'author.component.html',
-    styleUrls: ['author.component.scss']
+    selector: 'app-home-author',
+    templateUrl: './author.component.html',
+    styleUrls: ['./author.component.scss']
 })
 export class AuthorComponent implements OnInit {
-    authors: any = {};
-    url: string = null;
+    url: string;
+    authors: any;
 
-    constructor(private apollo: Apollo, private router: Router, private spinner: NgxSpinnerService) { }
+    constructor(private apollo: Apollo, private router: Router) { }
 
     ngOnInit(): void {
-        this.spinner.show();
         this.url = environment.url;
         this.apollo.watchQuery({
             query: gql`
@@ -35,7 +33,6 @@ export class AuthorComponent implements OnInit {
             `
         }).valueChanges.subscribe(({ data }) => {
             this.authors = data;
-            this.spinner.hide();
         });
     }
 

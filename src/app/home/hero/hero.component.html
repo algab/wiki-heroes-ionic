@@ -1,8 +1,20 @@
 <ion-content>
-    <ngx-spinner bdOpacity=0.9 bdColor="#fcfcfc" size="medium" color="#f04141" type="ball-clip-rotate">
-        <p style="color: black">Carregando...</p>
-    </ngx-spinner>
-    <ion-list>
+    <ion-list *ngIf="heroes === undefined">
+        <ion-item *ngFor="let number of [0,1,2,3,4,5]">
+            <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+                <h2>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h2>
+                <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="heroes !== undefined">
         <ion-item button *ngFor="let hero of heroes?.listHeroes" (click)="heroDetail(hero?.id)">
             <ion-avatar slot="start" *ngIf="url !== null">
                 <img src='{{url}}{{hero?.photo}}'>
